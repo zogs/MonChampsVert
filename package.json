@@ -1,0 +1,21 @@
+{
+  "name": "bre19",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+    "preview": "svelte-kit preview"
+  },
+  "devDependencies": {
+    "@sveltejs/kit": "next",
+    "@turf/difference": "^6.5.0",
+    "@turf/ellipse": "^6.5.0",
+    "csv-parser": "^3.0.0",
+    "dayjs": "^1.10.7",
+    "deck.gl": "^8.6.2",
+    "rater-js": "^1.0.1",
+    "svelte": "^3.42.6",
+    "svelte-stars-rating": "^1.0.3"
+  },
+  "type": "module"
+}
