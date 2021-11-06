@@ -7,7 +7,7 @@
 </script>
 
 <section>
-<h1>Mon Champs Vert</h1>
+<h1>Mon Champ Vert</h1>
 <div class="logo">
   <Logo />
 </div>
