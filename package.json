@@ -7,6 +7,7 @@
     "preview": "svelte-kit preview"
   },
   "devDependencies": {
+    "@sveltejs/adapter-static": "^1.0.0-next.21",
     "@sveltejs/kit": "next",
     "@turf/difference": "^6.5.0",
     "@turf/ellipse": "^6.5.0",
@@ -15,6 +16,7 @@
     "deck.gl": "^8.6.2",
     "rater-js": "^1.0.1",
     "svelte": "^3.42.6",
+    "svelte-preprocess": "^4.9.8",
     "svelte-stars-rating": "^1.0.3"
   },
   "type": "module"
