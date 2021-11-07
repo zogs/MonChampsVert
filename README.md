@@ -1,38 +1,24 @@
-# create-svelte
+# MonChampVert
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+Projet réalisé lors du Ocean Hackathon® 2021 - site de BREST
+du ven. 5 novembre 2021, 17:00 – dim. 7 novembre 2021, 19:00
 
-## Creating a project
+## Concept
 
-If you're seeing this, you've probably already done this step. Congrats!
+Prevoir au mieux les créneaux d'épandage agricoles afin de limiter l'impact du ruisselement des produits provoquant l'apparition d'algues vertes.
+En se basant sur des données météorologique et agronomique, l'application, à destination des agriculteurs, propose d'évaluer les opportunités d'épandages dans les jours à venir sur sa parcelle.
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+## Disclaimer
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+L'application est un proof of concept, fonctionnel, mais avec un jeu de données limité.
 
-> Note: the `@next` is temporary
+## Contact
 
-## Developing
+- porteur de project : corentin.renaut@googlemail.com
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Remerciements
 
-```bash
-npm run dev
+Merci à l'équipe : Corentin, Paul, Marie Anne et Florent
+Ainsi qu'à l'organisation <3
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
 
-## Building
-
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
-
-```bash
-npm run build
-```
-
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
