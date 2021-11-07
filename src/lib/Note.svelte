@@ -61,7 +61,7 @@ export let date;
 
   function computePreviDates() {
     let dates = [date];
-    for (let i = 1; i <= $nbPrevi ; i++) {
+    for (let i = 1; i < $nbPrevi ; i++) {
       const d = new Date(today.getTime() + 86400000*i);
       dates.push(d);
 
@@ -82,12 +82,12 @@ export let date;
     for(const serie of previSeries) {
       let rand = Math.random();
       let mm;
-      if(rand < 0.3) {
+      if(rand < 0.5) {
         mm = 0;
       } else if(rand < 0.6) {
         mm = Math.ceil(Math.random()*15);
       } else {
-        mm = Math.ceil(Math.random()*30)
+        mm = Math.ceil(Math.random()*60)
       }
       serie.RAIN = mm;
     }
@@ -103,13 +103,10 @@ export let date;
   function calculWindNote() {
     let nb = 0;
     for(const s of previSeries) {
-      let value = s.FXI.replace(',','.');
-      let meterPerSecond = parseFloat(value);
-
-      let knits = meterPerSecond*knitMeterSecond;
-      if(knits > 25) nb++;
+      let value = s.FXY.replace(',','.');
+      if(value > 5) nb++;
     }
-    noteWind = ($nbPrevi-nb)/$nbPrevi;
+    noteWind = (7-nb)/7;
   }
 
   function calculSunNote() {
@@ -183,6 +180,8 @@ export let date;
 
 <article on:click={() => chooseDate(date)}>
   <strong>{ date.toLocaleDateString('fr', {weekday: 'long', day: '2-digit'}) }</strong>
+  <!--<small>Wind: {noteWind} Rain: {noteRain} Sun: {noteSun} Temp: {noteTemp}
+  -->
   {#if rating }
   <span class="rating">
     <StarRating rating={rating} isIndicatorActive={false} style={starStyle}/>
@@ -191,6 +190,6 @@ export let date;
 </article>
 
 <style>
-  article { padding: 10px; background:#ffffff; display:flex; align-items:center; justify-content: center; }
+  article { padding: 10px; background:#ffffff; display:flex; align-items:center; justify-content: center; cursor:pointer;}
   strong { display:block; width: 120px; text-transform: capitalize; }
 </style>

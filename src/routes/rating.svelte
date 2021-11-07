@@ -41,6 +41,6 @@
 <style>
   span { position:absolute; right:10px; cursor:pointer; }
   section { flex:1; display:flex; flex-direction:column; justify-content: space-around; align-items:center; background:#dae2ce; padding-top:20px; }
-  .content { background-color: white; margin-top:30px; padding-bottom:30px; flex:1; height:80%; width:80%; display:flex; flex-direction:column; justify-content: space-between;}
-  div { padding:30px 0;  display:flex; flex-direction:row; justify-content:space-between; padding-left:20px; padding-right:20px; }
+  .content { background-color: white; margin-top:30px; padding-bottom:30px; flex:1; height:80%; width:80%; display:flex; flex-direction:column; justify-content: flex-start;}
+  div { padding: 25px 0;  display:flex; flex-direction:row; justify-content:space-between; padding-left:20px; padding-right:20px; font-size:12px }
 </style>
