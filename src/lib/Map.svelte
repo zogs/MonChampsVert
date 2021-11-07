@@ -3,18 +3,18 @@ import { onMount } from "svelte";
 
 import { lat, lon } from '$lib/stores/AppStore';
 
-import ellipse from '@turf/ellipse';
-import difference from '@turf/difference';
+import * as turf from '@turf/turf';
 import * as geojsonBretagne from './bretagne.json';
 import * as geojsonCoursDeau from './../../static/data/rivieres.json';
 
 let _deckgl;
 let _baseLayers = [];
 let _mapViewState = {
-  latitude: 48.2,
-  longitude: -3.5,
+  latitude: 48.111,
+  longitude: -4.148,
   zoom: 7
 }
+let _closestRiver = null;
 
 let Deck;
 let TileLayer;
@@ -62,8 +62,32 @@ function createDeckMap() {
 function onClick(info) {
   $lat = info.coordinate[1];
   $lon = info.coordinate[0];
-  console.log(info)
+
+  findClosestRiver();
+
+
   updateLayers();
+}
+
+function findClosestRiver() {
+
+  var point = turf.point([$lon, $lat]);
+  var rivers = [];
+  var distances = [];
+  for(const cours of geojsonCoursDeau.features) {
+    let nearestPoint = turf.nearestPointOnLine(cours, point);
+    let distance = nearestPoint.properties.dist;
+    rivers.push(cours);
+    distances.push(distance);
+  }
+
+  let sorted = [...distances]
+  sorted.sort(((a, b) => a - b));
+  let index = distances.findIndex(i => i === sorted[0]);
+  let river = rivers[index];
+
+  _closestRiver = river;
+
 }
 
 function updateLayers() {
@@ -105,6 +129,18 @@ function updateLayers() {
     getLineColor: [47, 236, 255]
   });
 
+  const river = new GeojsonLayer({
+    id: 'river',
+    data: _closestRiver,
+    pickable: false,
+    stroke: true,
+    filled: false,
+    extruded: false,
+    lineWidthUnits: 'pixels',
+    getLineWidth:4,
+    getLineColor: [250, 26, 155]
+  });
+console.log(_closestRiver)
   const point = new IconLayer({
     id: 'point-layer',
     data: [{lon: $lon, lat: $lat}],
@@ -128,6 +164,7 @@ function updateLayers() {
     basemap,
     bretagne,
     coursdeau,
+    river,
     point
   ]
 
@@ -138,13 +175,23 @@ function updateLayers() {
   });
 }
 
+function getGPSPosition() {
+
+  $lat = 48.390394;
+  $lon = -4.486076;
+
+  updateLayers();
+}
+
 
 </script>
 
 <map>
   <canvas id="deckgl"></canvas>
+  <button on:click={getGPSPosition}>Ma position GPS</button>
 </map>
 
 <style>
   map { position:relative; flex:1; }
+  button { position:absolute; bottom:10px; right:10px; font-size: 60%; border-radius: 5px; }
 </style>
