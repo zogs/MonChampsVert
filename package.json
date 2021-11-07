@@ -2,7 +2,7 @@
   "name": "bre19",
   "version": "0.0.1",
   "scripts": {
-    "dev": "svelte-kit dev",
+    "dev": "svelte-kit dev --host 0.0.0.0",
     "build": "svelte-kit build",
     "preview": "svelte-kit preview"
   },
@@ -11,6 +11,8 @@
     "@sveltejs/kit": "next",
     "@turf/difference": "^6.5.0",
     "@turf/ellipse": "^6.5.0",
+    "@turf/nearest-point-on-line": "^6.5.0",
+    "@turf/turf": "^6.5.0",
     "csv-parser": "^3.0.0",
     "dayjs": "^1.10.7",
     "deck.gl": "^8.6.2",
